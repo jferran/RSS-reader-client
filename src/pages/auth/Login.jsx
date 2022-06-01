@@ -33,7 +33,7 @@ function Login() {
         authenticateUser()
 
         //asignar los valores a los estados globales para manejo en el FE, con un context
-        navigate('/todos')
+        navigate('/')
 
     } catch (error) {
         if(error.response.status === 400 || error.response.status === 401){

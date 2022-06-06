@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import { StyleContext } from "./context/style.context";
 //import routes from "./config/routes";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+//import { StyleContext } from "../context/StyleContext"
 
 function App() {
+
+  const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
+  console.log(darkMode)
+
   return (
-    <div className="App">
+    <div className={`App ${bgStyle}`}>
+
+      <button onClick={handleToggle}>Modus</button>
+      <p>{darkMode ? 'true' : 'false'}</p>
+
       <Navbar />
       <Routes>
 

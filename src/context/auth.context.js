@@ -11,8 +11,8 @@ function AuthWrapper(props){
 
     const authenticateUser = async () => {
         setIsLoading(true)
+        setIsLoggedIn(false) //test
         try {
-            
             // donde llamaremos a esa ruta verify
             const response = await verifyService(user)
             console.log("Token valido")

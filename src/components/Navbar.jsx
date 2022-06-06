@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from 'react'
 import { AuthContext } from '../context/auth.context'
 import { StyleContext } from '../context/style.context';
+import { getMyFeedsService } from '../services/user.services';
 
 function Navbar() {
   const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
   const { isLoggedIn, user, authenticateUser } = useContext(AuthContext)
+  const [myFeeds, setMyFeeds] = useState(null)
+  useEffect(()=>{
+    getMyFeeds()
+  },[])
 
   const toggleStyles = (navInfo) => {
     return navInfo.isActive === true ? activeStyles : inActiveStyles;
@@ -23,6 +28,18 @@ function Navbar() {
     localStorage.removeItem("authToken")
     authenticateUser()
   }
+
+  const getMyFeeds = async () => {
+    try {
+      const response = await getMyFeedsService()
+      setMyFeeds(response.data)
+    } catch (error) {
+      
+    }
+  }
+console.log("myFeeds: ",myFeeds)
+
+
   console.log('loggedIn: ', isLoggedIn)
 
   return (
@@ -49,6 +66,7 @@ function Navbar() {
                 Subscriptions
               </a>
               <div className="dropdown-menu">
+                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className="dropdown-item" href="/">{element.feed.name}</NavLink>)}
                 <a className="dropdown-item" href="/">Link 1</a>
                 <a className="dropdown-item" href="/">Link 2</a>
                 <a className="dropdown-item" href="/">Link 3</a>

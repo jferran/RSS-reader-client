@@ -6,6 +6,7 @@ import { StyleContext } from "./context/style.context";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Error from "./pages/Error";
+import FeedPage from "./pages/FeedPage";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 //import { StyleContext } from "../context/StyleContext"
@@ -28,6 +29,8 @@ function App() {
           <Route key={route.path} path={route.path} element={route.element} />
         ))} */}
         <Route path="/" element={<Home />} />
+        <Route path="/feed/" element={<FeedPage/>}/>
+        <Route path="/feed/:id" element={<FeedPage/>}/>
 
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />

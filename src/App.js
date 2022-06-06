@@ -18,10 +18,6 @@ function App() {
 
   return (
     <div className={`App ${bgStyle}`}>
-
-      <button onClick={handleToggle}>Modus</button>
-      <p>{darkMode ? 'true' : 'false'}</p>
-
       <Navbar />
       <Routes>
 

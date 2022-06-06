@@ -61,16 +61,25 @@ console.log("myFeeds: ",myFeeds)
             <li className="nav-item">
               <a className="nav-link disabled" href="/">Disabled</a>
             </li>
+            <li className="nav-item">
+              <a className={`nav-link ${textStyle}`} href="/">Favorited news</a>
+            </li>
+            <li className="nav-item">
+              <a className={`nav-link ${textStyle}`} href="/">Add Subscription</a>
+            </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="/" id="navbardrop" data-toggle="dropdown">
+              <a className={`nav-link dropdown-toggle ${textStyle}`} href="/" id="navbardrop" data-toggle="dropdown">
                 Subscriptions
               </a>
-              <div className="dropdown-menu">
-                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className="dropdown-item" href="/">{element.feed.name}</NavLink>)}
-                <a className="dropdown-item" href="/">Link 1</a>
-                <a className="dropdown-item" href="/">Link 2</a>
-                <a className="dropdown-item" href="/">Link 3</a>
+              <div className={`dropdown-menu ${bgStyle}`}>
+                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`} href="/">{element.feed.name}</NavLink>)}
+                <a className={`dropdown-item ${textStyle}`} href="/">Link 1</a>
+                <a className={`dropdown-item ${textStyle}`} href="/">Link 2</a>
+                <a className={`dropdown-item ${textStyle}`} href="/">Link 3</a>
               </div>
+            </li>
+            <li className="nav-item">
+              <a className={`nav-link ${textStyle}`} href="/">Manage Subscriptions</a>
             </li>
             <li className="nav-item ml-md-auto"><button className="btn btn-primary switch" onClick={handleToggle}>Switch Light/Dark</button></li>
           </ul>
@@ -78,7 +87,7 @@ console.log("myFeeds: ",myFeeds)
             <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
             <button className="btn btn-success my-2 my-sm-0" type="button">Search</button>
           </form>
-          {isLoggedIn ? (<button className="btn btn-success my-2 my-sm-0" type="button">Logout</button>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
+          {isLoggedIn ? (<button className="btn btn-success my-2 my-sm-0" type="button" onClick={handleLogout}>Logout</button>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
           {/* https://www.cssscript.com/dark-mode-switcher-bootstrap-5/ */}
         </div>
         

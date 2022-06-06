@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { StyleContext } from "./context/style.context";
+import AddFeed from "./pages/AddFeed";
 //import routes from "./config/routes";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
@@ -27,6 +28,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/feed/" element={<FeedPage/>}/>
         <Route path="/feed/:id" element={<FeedPage/>}/>
+        <Route path="/favouriteNews/" element={<FeedPage/>}/>
+
+        <Route path="/addFeed/" element={<AddFeed/>}/>
 
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />

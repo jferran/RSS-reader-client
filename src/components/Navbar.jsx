@@ -62,17 +62,18 @@ console.log("myFeeds: ",myFeeds)
               <a className="nav-link disabled" href="/">Disabled</a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${textStyle}`} href="/">Favorited news</a>
+              <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${textStyle}`} href="/">Add Subscription</a>
+              
+              <NavLink to={`/addFeed`} className={`dropdown-item ${textStyle}`}>Add Subscription</NavLink>
             </li>
             <li className="nav-item dropdown">
               <a className={`nav-link dropdown-toggle ${textStyle}`} href="/" id="navbardrop" data-toggle="dropdown">
                 Subscriptions
               </a>
               <div className={`dropdown-menu ${bgStyle}`}>
-                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`} href="/">{element.feed.name}</NavLink>)}
+                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`}>{element.feed.name}</NavLink>)}
                 <a className={`dropdown-item ${textStyle}`} href="/">Link 1</a>
                 <a className={`dropdown-item ${textStyle}`} href="/">Link 2</a>
                 <a className={`dropdown-item ${textStyle}`} href="/">Link 3</a>

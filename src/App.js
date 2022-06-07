@@ -21,8 +21,8 @@ function App() {
   return (
     <div className={`App vh-100 ${bgStyle}`}>
       <Navbar />
+      <div className="container">
       <Routes>
-
         {/* {routes({}).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))} */}
@@ -41,6 +41,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
       </Routes>
+      </div>
     </div>
   );
 }

@@ -41,7 +41,7 @@ function NewsEntry({article}) {
       <button onClick={handleSave}>Save</button>
       <div>
       <h3>Comments:</h3>
-        {comments.map((comment)=><p>{comment}</p>)}
+        {comments.map((comment)=><p>{comment._id}, {comment.comment}, {comment.user.username}, {comment.createdAt}, {comment.updatedAt}</p>)}
         <button onClick={(handleOpenCommentForm)}>Write a comment</button>
         {commentForm && 
           <form onSubmit={handleCommentSubmit}>

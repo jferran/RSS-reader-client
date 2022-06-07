@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { saveToFavouritesService, writeCommentService } from '../services/user.services'
 
@@ -8,6 +8,16 @@ function NewsEntry({article}) {
   const [comment, setComment] = useState('')
   const [commentForm, setCommentForm] = useState(false)
   const navigate = useNavigate()
+
+  const ref = useRef(null);
+  console.log(ref)
+  useEffect(() => {
+    const allImg = ref.current.querySelectorAll("img")
+    allImg.forEach((img) => img.className = 'img-fluid')
+  }, []);
+
+    //
+
   const handleCommentSubmit = (e) => {
     e.preventDefault()
 
@@ -35,7 +45,7 @@ function NewsEntry({article}) {
   return (
     <div>
       <p>{_id}</p>
-      <div dangerouslySetInnerHTML={{__html: content}} />
+      <div ref={ref} dangerouslySetInnerHTML={{__html: content}} />
       {/* {<div>{content}</div>} */}
       <p>{pubDate}</p>
       <button onClick={handleSave}>Save</button>

@@ -74,13 +74,10 @@ console.log("myFeeds: ",myFeeds)
               </a>
               <div className={`dropdown-menu ${bgStyle}`}>
                 {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`}>{element.feed.name}</NavLink>)}
-                <a className={`dropdown-item ${textStyle}`} href="/">Link 1</a>
-                <a className={`dropdown-item ${textStyle}`} href="/">Link 2</a>
-                <a className={`dropdown-item ${textStyle}`} href="/">Link 3</a>
               </div>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${textStyle}`} href="/">Manage Subscriptions</a>
+              <NavLink to={`/manage`} className={`nav-link ${textStyle}`}>Manage Subscriptions</NavLink>
             </li>
             <li className="nav-item ml-md-auto"><button className="btn btn-primary switch" onClick={handleToggle}>Switch Light/Dark</button></li>
           </ul>
@@ -95,7 +92,7 @@ console.log("myFeeds: ",myFeeds)
       </nav>
 
       
-      { user !== null && <p>Bienvenido: {user.username}</p>}
+      {/* { user !== null && <p>Bienvenido: {user.username}</p>}
 
       { isLoggedIn === true ? (
         <nav>
@@ -109,7 +106,7 @@ console.log("myFeeds: ",myFeeds)
           <NavLink to='/login' style={toggleStyles}>Login</NavLink>
           <NavLink to='/profile' style={toggleStyles}>News</NavLink>
         </nav>      
-      )}
+      )} */}
       
 
       

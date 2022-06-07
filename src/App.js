@@ -9,6 +9,7 @@ import Signup from "./pages/auth/Signup";
 import Error from "./pages/Error";
 import FeedPage from "./pages/FeedPage";
 import Home from "./pages/Home";
+import ManageFeeds from "./pages/ManageFeeds";
 import NotFound from "./pages/NotFound";
 //import { StyleContext } from "../context/StyleContext"
 
@@ -18,7 +19,7 @@ function App() {
   console.log(darkMode)
 
   return (
-    <div className={`App ${bgStyle}`}>
+    <div className={`App vh-100 ${bgStyle}`}>
       <Navbar />
       <Routes>
 
@@ -31,7 +32,8 @@ function App() {
         <Route path="/favouriteNews/" element={<FeedPage/>}/>
 
         <Route path="/addFeed/" element={<AddFeed/>}/>
-
+        <Route path="/manage/" element={<ManageFeeds/>}/>
+        
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
 

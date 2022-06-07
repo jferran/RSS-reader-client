@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { searchFeedService } from '../services/user.services'
+import { searchFeedService, subscribeFeedService } from '../services/user.services'
 
 function AddFeed() {
   const [url, setUrl] = useState('')
@@ -29,6 +29,15 @@ function AddFeed() {
     }
 
   }
+  const handleSubscribe = async (e) => {
+    
+    const feedUrl=e.target.value
+    const title = e.target.title
+    //const favicon = e.target.favicon
+    //const parent = e.target.parentElement
+    subscribeFeedService(feedUrl, title)
+    
+  }
 
 
 
@@ -49,8 +58,10 @@ function AddFeed() {
         <button type="submit">Search</button>
       </form>
 
-      {foundFeeds!=null && foundFeeds.map((element, index)=> <div>{index}: {element.title} {element.url}, {element.favicon}</div>)}
+      {foundFeeds!=null && foundFeeds.map((element, index)=> <div>{index}: {element.title} {element.url}, {element.favicon} <button onClick={handleSubscribe} value={element.url} title={element.title}>Subscribe</button></div>)}
     
+      <h3>Feeds shared by other users:</h3>
+      
     </div>
   )
 }

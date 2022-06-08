@@ -33,7 +33,7 @@ function SubscribedFeeds() {
     <div><h2>SubscribedFeeds</h2>
     {myFeeds !== null && myFeeds.map((element) => 
     
-        <div><p>{element.feed.name}</p>
+        <div><p><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/> {element.feed.name}</p>
             {element.shared ? <button onClick={handleUnshare} value={element._id}>Unshare</button> : <button onClick={handleShare} value={element._id}>Share</button> }
             
             <button onClick={handleUnsubscribe} value={element._id}>Unsubscribe</button>

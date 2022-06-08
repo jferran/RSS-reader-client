@@ -76,7 +76,7 @@ console.log("myFeeds: ",myFeeds)
                 Subscriptions
               </a>
               <div className={`dropdown-menu ${bgStyle}`}>
-                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`}>{element.feed.name}</NavLink>)}
+                {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`}><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/>{element.feed.name}</NavLink>)}
               </div>
             </li>
             <li className="nav-item">

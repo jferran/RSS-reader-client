@@ -58,7 +58,7 @@ function AddFeed() {
         <button type="submit">Search</button>
       </form>
 
-      {foundFeeds!=null && foundFeeds.map((element, index)=> <div>{index}: {element.title} {element.url}, {element.favicon} <button onClick={handleSubscribe} value={element.url} title={element.title}>Subscribe</button></div>)}
+      {foundFeeds!=null && foundFeeds.map((element, index)=> <div>{index}: <img src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.url}&size=128`} alt=''/> {element.title} {element.url}, {element.favicon} <button onClick={handleSubscribe} value={element.url} title={element.title}>Subscribe</button></div>)}
 
     </div>
   )

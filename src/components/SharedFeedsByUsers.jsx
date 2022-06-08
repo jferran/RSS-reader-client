@@ -13,11 +13,11 @@ function SharedFeedsByUsers() {
     setSharedFeeds(feedsFromUsers.data)
     setFetching(false)
   }
-  
+
   return (
     <div>
     <h3>Feeds shared by other users:</h3>
-      {!fetching && sharedFeeds.map((element) => <p>{element.name} Shared by {element.sharedBy.length} users<button>Subscribe</button></p>) }
+      {!fetching && sharedFeeds.map((element) => <p><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.sourceUrl}&size=128`} alt=''/>{element.name} Shared by {element.sharedBy.length} users<button>Subscribe</button></p>) }
     </div>
   )
 }

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { SubscriptionsContext } from '../context/subscriptions.context'
 import { searchFeedService, subscribeFeedService } from '../services/user.services'
 
 function AddFeed() {
@@ -7,6 +8,7 @@ function AddFeed() {
   const [foundFeeds, setFoundFeeds] = useState(null)
   //const [fetching, setFetching] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
+  const { getSubscriptions } = useContext(SubscriptionsContext)
   const navigate = useNavigate()
 
   const handleUrlChange = (e) => {
@@ -36,7 +38,8 @@ function AddFeed() {
     const title = e.target.title
     //const favicon = e.target.favicon
     //const parent = e.target.parentElement
-    subscribeFeedService(feedUrl, title)
+    await subscribeFeedService(feedUrl, title)
+    await getSubscriptions()
     
   }
 

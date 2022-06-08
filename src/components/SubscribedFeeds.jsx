@@ -1,37 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { SubscriptionsContext } from '../context/subscriptions.context'
 import { getMyFeedsService, shareFeedService, unshareFeedService, unSubscribeFeedService } from '../services/user.services'
 
 function SubscribedFeeds() {
+    const { mySubscriptions, getSubscriptions } = useContext(SubscriptionsContext)
     const [myFeeds, setMyFeeds] = useState(null)
     const navigate = useNavigate()
-  useEffect(()=>{
-    getMyFeeds()
-  },[])
-  const getMyFeeds = async () => {
-    try {
-      const response = await getMyFeedsService()
-      setMyFeeds(response.data)
-    } catch (error) {
-      navigate("/error")
-    }
-  }
-  const handleShare = (e) => {
+  // useEffect(()=>{
+  //   getMyFeeds()
+  // },[])
+  // const getMyFeeds = async () => {
+  //   try {
+  //     const response = await getMyFeedsService()
+  //     setMyFeeds(response.data)
+  //   } catch (error) {
+  //     navigate("/error")
+  //   }
+  // }
+  const handleShare = async (e) => {
     const feedID=e.target.value
-    shareFeedService(feedID)
+    await shareFeedService(feedID)
+    await getSubscriptions()
   }
-  const handleUnshare = (e) => {
+  const handleUnshare = async (e) => {
     const feedID=e.target.value
-    unshareFeedService(feedID)
+    await unshareFeedService(feedID)
+    await getSubscriptions()
   }
-  const handleUnsubscribe = (e) => {
+  const handleUnsubscribe = async (e) => {
     const feedID=e.target.value
-    unSubscribeFeedService(feedID)
+    await unSubscribeFeedService(feedID)
+    await getSubscriptions()
   }
 
   return (
     <div><h2>SubscribedFeeds</h2>
-    {myFeeds !== null && myFeeds.map((element) => 
+    {mySubscriptions !== null && mySubscriptions.map((element) => 
     
         <div><p><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/> {element.feed.name}</p>
             {element.shared ? <button onClick={handleUnshare} value={element._id}>Unshare</button> : <button onClick={handleShare} value={element._id}>Share</button> }

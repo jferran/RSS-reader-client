@@ -20,9 +20,9 @@ function StyleWrapper(props){
         darkMode, handleToggle, bgStyle, textStyle, navBarStyle
     }
 
-    useEffect(()=>{
-        handleToggle()
-    },[])
+    // useEffect(()=>{
+    //     handleToggle()
+    // },[])
     
     return (
         <StyleContext.Provider value={passedContext}>

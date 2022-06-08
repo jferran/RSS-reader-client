@@ -1,10 +1,11 @@
 import {createContext, useEffect, useState} from 'react'
-import { getMyFeedsService } from '../services/user.services'
+import { getFeedsSharedByUsers, getMyFeedsService } from '../services/user.services'
 
 const SubscriptionsContext = createContext()
 
 function SubscriptionsWrapper(props){
     const [mySubscriptions, setMySubscriptions] = useState(null)
+    const [sharedSubscriptions, setSharedSubscriptions] = useState(null)
     
     const getSubscriptions = async () => {
         try {
@@ -15,15 +16,26 @@ function SubscriptionsWrapper(props){
             
         }
     }
+    const getSharedSubscriptions = async () => {
+        try {
+            const response = await getFeedsSharedByUsers()
+            setSharedSubscriptions(response.data)
+        } catch (error) {
+            
+        }
+    }
 
     const passedContext = {
         mySubscriptions,
         setMySubscriptions,
-        getSubscriptions
+        getSubscriptions,
+        sharedSubscriptions,
+        getSharedSubscriptions
     }
 
     useEffect(()=>{
         getSubscriptions()
+        getSharedSubscriptions()
     },[])
     
     return (

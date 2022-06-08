@@ -4,7 +4,7 @@ import { SubscriptionsContext } from '../context/subscriptions.context'
 import { getMyFeedsService, shareFeedService, unshareFeedService, unSubscribeFeedService } from '../services/user.services'
 
 function SubscribedFeeds() {
-    const { mySubscriptions, getSubscriptions } = useContext(SubscriptionsContext)
+    const { mySubscriptions, getSubscriptions, getSharedSubscriptions } = useContext(SubscriptionsContext)
     const [myFeeds, setMyFeeds] = useState(null)
     const navigate = useNavigate()
   // useEffect(()=>{
@@ -22,16 +22,19 @@ function SubscribedFeeds() {
     const feedID=e.target.value
     await shareFeedService(feedID)
     await getSubscriptions()
+    await getSharedSubscriptions()
   }
   const handleUnshare = async (e) => {
     const feedID=e.target.value
     await unshareFeedService(feedID)
     await getSubscriptions()
+    await getSharedSubscriptions()
   }
   const handleUnsubscribe = async (e) => {
     const feedID=e.target.value
     await unSubscribeFeedService(feedID)
     await getSubscriptions()
+    await getSharedSubscriptions()
   }
 
   return (

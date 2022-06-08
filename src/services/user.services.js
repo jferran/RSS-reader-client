@@ -35,6 +35,9 @@ const subscribeFeedService = (sourceUrl, title) => {
       })
       return service.get("/user/feed/createOrFindAndSubscribe")
 }
+const subscribeByIdService = (id) => {
+    return service.get(`/user/feed/${id}/subscribe`)
+}
 
 const unSubscribeFeedService = (id) => {
     return service.get(`/user/feed/${id}/unsubscribe`)
@@ -81,6 +84,7 @@ export {
     getMyNewsService,
     searchFeedService,
     subscribeFeedService,
+    subscribeByIdService,
     unSubscribeFeedService,
     shareFeedService,
     writeCommentService,

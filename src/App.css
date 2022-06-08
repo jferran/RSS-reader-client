@@ -2,6 +2,17 @@
     min-height: 100vh;
   
 } */
+/* html, body, #app, #app>div {
+  height: 100vh
+} */
+/* body > #root > div {
+  min-height: 100vh
+} */
+
+html, body, #root, .App {
+  height: 100%;
+}
+
 .App {
   text-align: center;
   /* min-height: 100vh; */

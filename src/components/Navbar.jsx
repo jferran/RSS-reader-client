@@ -45,7 +45,7 @@ console.log("myFeeds: ",myFeeds)
   return (
     <div>
       <nav className={`navbar navbar-expand-lg ${navBarStyle} ${bgStyle}`}>
-        <a className="navbar-brand" href="/">Logo</a>
+        <NavLink to={`/`} className={`navbar-brand`}>Logo</NavLink>
         <button className="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -61,13 +61,16 @@ console.log("myFeeds: ",myFeeds)
             <li className="nav-item">
               <a className="nav-link disabled" href="/">Disabled</a>
             </li>
+            
+
             <li className="nav-item">
               <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
-            <li className="nav-item">
-              
+
+            <li className="nav-item">  
               <NavLink to={`/addFeed`} className={`dropdown-item ${textStyle}`}>Add Subscription</NavLink>
             </li>
+
             <li className="nav-item dropdown">
               <a className={`nav-link dropdown-toggle ${textStyle}`} href="/" id="navbardrop" data-toggle="dropdown">
                 Subscriptions
@@ -79,6 +82,8 @@ console.log("myFeeds: ",myFeeds)
             <li className="nav-item">
               <NavLink to={`/manage`} className={`nav-link ${textStyle}`}>Manage Subscriptions</NavLink>
             </li>
+
+
             <li className="nav-item ml-md-auto"><button className="btn btn-primary switch" onClick={handleToggle}>Switch Light/Dark</button></li>
           </ul>
           <form className="form-inline my-2 my-lg-0">

@@ -1,67 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { saveToFavouritesService, writeCommentService } from '../services/user.services'
+import { saveToFavouritesService, unsaveFromFavouritesService, writeCommentService } from '../services/user.services'
+import Comments from './Comments'
 
 function NewsEntry({article}) {
-  const { favorite, feed, seen } = article
-  const { _id, guiid, content, pubDate, comments } = article._id
-  const [comment, setComment] = useState('')
-  const [commentForm, setCommentForm] = useState(false)
+  const { favorite, seen } = article
+  const { _id, guiid, content, pubDate, comments, title, feed } = article._id
+  const [ favoriteState, setFavoriteState ] = useState(favorite)
+  
   const navigate = useNavigate()
 
   const ref = useRef(null);
-  console.log(ref)
+  
   useEffect(() => {
+    
     const allImg = ref.current.querySelectorAll("img")
     allImg.forEach((img) => img.className = 'img-fluid')
   }, []);
 
-    //
-
-  const handleCommentSubmit = (e) => {
-    e.preventDefault()
-
-    try {
-      writeCommentService(_id, comment)
-      //We have to refresh, rewrite article or comments
-    } catch (error) {
-        navigate("/error")
-    }
-
-
-    setCommentForm(false)
-  }
-  const handleOpenCommentForm = () => {
-    setComment('')
-    setCommentForm(true)
-  }
   const handleSave = () => {
     try {
       saveToFavouritesService(_id)
+      setFavoriteState(true)
+    } catch (error) {
+      navigate("/error")
+    }
+  }
+  const handleUnsave = () => {
+    try {
+      unsaveFromFavouritesService(_id)
+      setFavoriteState(false)
     } catch (error) {
       navigate("/error")
     }
   }
   return (
     <div>
-      <p>{_id}</p>
+      {/* <p>{_id}</p> */}
+      <h3>{title}</h3>
       <div ref={ref} dangerouslySetInnerHTML={{__html: content}} />
-      {/* {<div>{content}</div>} */}
       <p>{pubDate}</p>
-      <button onClick={handleSave}>Save</button>
-      <div>
-      <h3>Comments:</h3>
-        {comments.map((comment)=><p>{comment._id}, {comment.comment}, {comment.user.username}, {comment.createdAt}, {comment.updatedAt}</p>)}
-        <button onClick={(handleOpenCommentForm)}>Write a comment</button>
-        {commentForm && 
-          <form onSubmit={handleCommentSubmit}>
-            <label htmlFor='comment'>Add Comment:</label>
-            <input type='text' name='comment'></input>
-            <button type='submit'>Post Comment</button>
-          </form>
-        }
-          
+      <p>{feed.name}</p>
+      {favoriteState ? <button onClick={handleUnsave}>Unsave ♡</button> : <button onClick={handleSave}>Save ❤</button>}
+      
 
+      <div>
+        {/* {comments.map((comment)=><p> comment id: {comment._id}, Comment: {comment.comment}, User: {comment.user.username}, Created at: {comment.createdAt}, Updated at: {comment.updatedAt}</p>)} */}
+        <Comments newsId={_id} comments={comments}/>
       </div>
       
     </div>

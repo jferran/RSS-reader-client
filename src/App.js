@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 function App() {
 
   const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
+  
   console.log(darkMode)
 
   return (

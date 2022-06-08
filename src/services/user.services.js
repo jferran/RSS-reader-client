@@ -53,12 +53,26 @@ const writeCommentService = (id, comment) => {
 const saveToFavouritesService = (id) => {
     return service.get(`/user/news/${id}/markAsFavourite`)
 }
+const unsaveFromFavouritesService = (id) => {
+    return service.get(`/user/news/${id}/unmarkAsFavourite`)
+}
 const shareFeedService = (id) => {
     return service.get(`/user/feed/${id}/share`)
 }
 const unshareFeedService = (id) => {
     return service.get(`/user/feed/${id}/unshare`)
 }
+const refreshService = () => {
+    return service.get(`/feed/`)
+}
+const getNewsUpdateService = () => {
+    return service.get(`/user/news/refresh`)
+}
+
+const getFeedNameService = (id) => {
+    return service.get(`/user/feed/${id}/name`)
+}
+
 export {
     getMyFeedsService,
     getMyNewsService,
@@ -68,5 +82,9 @@ export {
     shareFeedService,
     writeCommentService,
     saveToFavouritesService,
-    unshareFeedService
+    unsaveFromFavouritesService,
+    unshareFeedService,
+    refreshService,
+    getNewsUpdateService,
+    getFeedNameService
 }

@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { StyleContext } from "./context/style.context";
-import AddFeed from "./pages/AddFeed";
 import Account from "./pages/auth/Account";
 //import routes from "./config/routes";
 import Login from "./pages/auth/Login";
@@ -16,8 +15,8 @@ import NotFound from "./pages/NotFound";
 
 function App() {
 
-  const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
-  
+  // const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
+  const { darkMode, bgStyle } = useContext(StyleContext)
   console.log(darkMode)
 
   return (
@@ -33,7 +32,6 @@ function App() {
         <Route path="/feed/:id" element={<FeedPage/>}/>
         <Route path="/favouriteNews/" element={<FeedPage/>}/>
 
-        <Route path="/addFeed/" element={<AddFeed/>}/>
         <Route path="/manage/" element={<ManageFeeds/>}/>
         
         <Route path="/signup" element={<Signup/>} />

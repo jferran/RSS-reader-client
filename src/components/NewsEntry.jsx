@@ -7,11 +7,30 @@ function NewsEntry({article}) {
   const { favorite, seen } = article
   const { _id, guiid, content, pubDate, comments, title, feed } = article._id
   const [ favoriteState, setFavoriteState ] = useState(favorite)
-  
   const navigate = useNavigate()
+  
+//   const [scrollPosition, setScrollPosition] = useState(0);
+//   const handleScroll = () => {
+//     console.log(title)
+//     const position = window.pageYOffset;
+//     setScrollPosition(position);
+//     console.log("position:", position)
+// };
+// useEffect(() => {
+//   window.addEventListener('scroll', handleScroll, { passive: true });
+
+//   return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//   };
+// }, []);
+
+  
 
   const ref = useRef(null);
   
+
+
+
   useEffect(() => {
     
     const allImg = ref.current.querySelectorAll("img")
@@ -34,6 +53,9 @@ function NewsEntry({article}) {
       navigate("/error")
     }
   }
+
+
+  
   return (
     <div>
       {/* <p>{_id}</p> */}
@@ -41,6 +63,7 @@ function NewsEntry({article}) {
       <div ref={ref} dangerouslySetInnerHTML={{__html: content}} />
       <p>{pubDate}</p>
       <p>{feed.name}</p>
+      <p>{seen ? 'Seen' : 'Not Seen'}</p>
       {favoriteState ? <button onClick={handleUnsave}>Unsave ♡</button> : <button onClick={handleSave}>Save ❤</button>}
       
 

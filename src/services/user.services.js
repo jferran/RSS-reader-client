@@ -14,7 +14,7 @@ const getMyNewsService = (id) => {
 const searchFeedService = (sourceUrl) =>{
     return service.request({
         method: 'POST',
-        url: `http://localhost:5005/api/feed/searchFeedSources`,
+        url: `${process.env.REACT_APP_SERVER_URL}/api/feed/searchFeedSources`,
         data: {
           sourceUrl: sourceUrl
         },
@@ -26,7 +26,7 @@ const searchFeedService = (sourceUrl) =>{
 const subscribeFeedService = (sourceUrl, title) => {
     return service.request({
         method: 'POST',
-        url: `http://localhost:5005/api/user/feed/createOrFindAndSubscribe`,
+        url: `${process.env.REACT_APP_SERVER_URL}/api/user/feed/createOrFindAndSubscribe`,
         data: {
           name: title,
           sourceUrl: sourceUrl,
@@ -43,7 +43,7 @@ const unSubscribeFeedService = (id) => {
 const writeCommentService = (id, comment) => {
     return service.request({
         method: 'POST',
-        url: `http://localhost:5005/api/user/news/${id}/comment`,
+        url: `${process.env.REACT_APP_SERVER_URL}/api/user/news/${id}/comment`,
         data: {
           comment: comment,
         },  
@@ -72,6 +72,9 @@ const getNewsUpdateService = () => {
 const getFeedNameService = (id) => {
     return service.get(`/user/feed/${id}/name`)
 }
+const getFeedsSharedByUsers = () => {
+    return service.get(`/user/feed/sharedByUsers`)
+}
 
 export {
     getMyFeedsService,
@@ -86,5 +89,6 @@ export {
     unshareFeedService,
     refreshService,
     getNewsUpdateService,
-    getFeedNameService
+    getFeedNameService,
+    getFeedsSharedByUsers
 }

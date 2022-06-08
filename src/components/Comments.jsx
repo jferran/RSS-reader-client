@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/auth.context'
 import { writeCommentService } from '../services/user.services'
+import Comment from './Comment'
 
 function Comments({newsId, comments}) {
     // const {_id, comment, createdAt, updatedAt} = comments
+    
     const [comment, setComment] = useState('')
     const [commentForm, setCommentForm] = useState(false)
     const [commentsState, setCommentsState] = useState(comments)
+    const [fetching, setFetching] = useState(false)
 
-
+    const navigate = useNavigate()
     const handleCommentSubmit = async (e) => {
         e.preventDefault()
     
         try {
           const newComment = await writeCommentService(newsId, comment)
-          setCommentsState([...commentsState, newComment])
+          //setCommentsState([...commentsState, newComment])
           //We have to refresh, rewrite article or comments
         } catch (error) {
-            Navigate("/error")
+            navigate("/error")
         }
     
     
@@ -31,10 +35,10 @@ function Comments({newsId, comments}) {
       const handleChange = (e) =>{
         setComment(e.target.value)
       }
-
+      
   return (
     <div><h1>Comments</h1>
-        {commentsState && commentsState.map((comment)=><p> comment id: {comment._id}, Comment: {comment.comment}, User: {comment.user.username}, Created at: {comment.createdAt}, Updated at: {comment.updatedAt}</p>)}
+        {commentsState && commentsState.map((comment)=><Comment commentProp={comment}/>)}
         <button onClick={(handleOpenCommentForm)}>Write a comment</button>
         {commentForm && 
           <form onSubmit={handleCommentSubmit}>

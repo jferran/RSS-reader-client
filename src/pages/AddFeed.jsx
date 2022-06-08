@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { searchFeedService, subscribeFeedService } from '../services/user.services'
+import { getFeedsSharedByUsers, searchFeedService, subscribeFeedService } from '../services/user.services'
 
 function AddFeed() {
   const [url, setUrl] = useState('')
   const [foundFeeds, setFoundFeeds] = useState(null)
+  const [sharedFeeds, setSharedFeeds] = useState(null)
+  const [fetching, setFetching] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
   const navigate = useNavigate()
 
+  useEffect(()=>{
+    getSharedFeeds()
+  },[])
+  const getSharedFeeds = async () => {
+    const feedsFromUsers = await getFeedsSharedByUsers()
+    setSharedFeeds(feedsFromUsers.data)
+    setFetching(false)
+  }
   const handleUrlChange = (e) => {
     setUrl(e.target.value)
   }
@@ -38,7 +48,7 @@ function AddFeed() {
     subscribeFeedService(feedUrl, title)
     
   }
-
+  console.log("shared: ",sharedFeeds)
 
 
   return (
@@ -61,7 +71,7 @@ function AddFeed() {
       {foundFeeds!=null && foundFeeds.map((element, index)=> <div>{index}: {element.title} {element.url}, {element.favicon} <button onClick={handleSubscribe} value={element.url} title={element.title}>Subscribe</button></div>)}
     
       <h3>Feeds shared by other users:</h3>
-      
+      {!fetching && sharedFeeds.map((element) => <p>{element.name} Shared by {element.sharedBy.length} users<button>Subscribe</button></p>) }
     </div>
   )
 }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getMyFeedsService, shareFeedService, unshareFeedService, unSubscribeFeedService } from '../services/user.services'
 
 function ManageFeeds() {
     const [myFeeds, setMyFeeds] = useState(null)
+    const navigate = useNavigate()
   useEffect(()=>{
     getMyFeeds()
   },[])
@@ -11,7 +13,7 @@ function ManageFeeds() {
       const response = await getMyFeedsService()
       setMyFeeds(response.data)
     } catch (error) {
-      
+      navigate("/error")
     }
   }
   const handleShare = (e) => {

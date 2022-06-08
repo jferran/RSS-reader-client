@@ -16,7 +16,7 @@ function NewsEntry({article}) {
     
     const allImg = ref.current.querySelectorAll("img")
     allImg.forEach((img) => img.className = 'img-fluid')
-  }, []);
+  }, [article]);
 
   const handleSave = () => {
     try {

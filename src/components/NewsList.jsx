@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getMyNewsService } from '../services/user.services'
 import NewsEntry from './NewsEntry'
 
 function NewsList({id}) {
   console.log("id: ", id)
   const [myNews, setMyNews] = useState(null)
-  
+  const navigate = useNavigate()
   useEffect(()=>{
     getMyNews()
   },[id])
@@ -22,7 +23,7 @@ function NewsList({id}) {
       console.log("myNews:", myNews)
       
     } catch (error) {
-      
+      navigate("/error")
     }
   }
   

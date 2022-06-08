@@ -61,8 +61,8 @@ console.log("myFeeds: ",myFeeds)
             <li className="nav-item">
               <a className="nav-link disabled" href="/">Disabled</a>
             </li>
-            
-
+            {isLoggedIn && 
+            <>
             <li className="nav-item">
               <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
@@ -82,15 +82,15 @@ console.log("myFeeds: ",myFeeds)
             <li className="nav-item">
               <NavLink to={`/manage`} className={`nav-link ${textStyle}`}>Manage Subscriptions</NavLink>
             </li>
-
-
+            </>
+          }
             <li className="nav-item ml-md-auto"><button className="btn btn-primary switch" onClick={handleToggle}>Switch Light/Dark</button></li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
             <button className="btn btn-success my-2 my-sm-0" type="button">Search</button>
           </form>
-          {isLoggedIn ? (<button className="btn btn-success my-2 my-sm-0" type="button" onClick={handleLogout}>Logout</button>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
+          {isLoggedIn ? (<><button className="btn btn-success my-2 my-sm-0" type="button"><NavLink to={`/account`}>My Account</NavLink></button><button className="btn btn-success my-2 my-sm-0" type="button" onClick={handleLogout}>Logout</button></>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
           {/* https://www.cssscript.com/dark-mode-switcher-bootstrap-5/ */}
         </div>
         

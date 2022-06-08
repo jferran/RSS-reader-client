@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { StyleContext } from "./context/style.context";
 import AddFeed from "./pages/AddFeed";
+import Account from "./pages/auth/Account";
 //import routes from "./config/routes";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
@@ -37,6 +38,7 @@ function App() {
         
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/account" element={<Account/>} />
 
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />

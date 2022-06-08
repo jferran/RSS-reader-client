@@ -14,7 +14,7 @@ const getMyNewsService = (id) => {
 const searchFeedService = (sourceUrl) =>{
     return service.request({
         method: 'POST',
-        url: `${process.env.REACT_APP_SERVER_URL}/api/feed/searchFeedSources`,
+        url: `${process.env.REACT_APP_SERVER_URL}/feed/searchFeedSources`,
         data: {
           sourceUrl: sourceUrl
         },
@@ -26,7 +26,7 @@ const searchFeedService = (sourceUrl) =>{
 const subscribeFeedService = (sourceUrl, title) => {
     return service.request({
         method: 'POST',
-        url: `${process.env.REACT_APP_SERVER_URL}/api/user/feed/createOrFindAndSubscribe`,
+        url: `${process.env.REACT_APP_SERVER_URL}/user/feed/createOrFindAndSubscribe`,
         data: {
           name: title,
           sourceUrl: sourceUrl,
@@ -43,7 +43,7 @@ const unSubscribeFeedService = (id) => {
 const writeCommentService = (id, comment) => {
     return service.request({
         method: 'POST',
-        url: `${process.env.REACT_APP_SERVER_URL}/api/user/news/${id}/comment`,
+        url: `${process.env.REACT_APP_SERVER_URL}/user/news/${id}/comment`,
         data: {
           comment: comment,
         },  

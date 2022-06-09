@@ -52,6 +52,15 @@ const writeCommentService = (id, comment) => {
         },  
       })
 }
+const deleteCommentService = (id, comment) => {
+    return service.request({
+        method: 'DELETE',
+        url: `${process.env.REACT_APP_SERVER_URL}/user/comments/${id}`,
+        data: {
+          comment: comment,
+        },  
+      })
+}
 
 const saveToFavouritesService = (id) => {
     return service.get(`/user/news/${id}/markAsFavourite`)
@@ -92,6 +101,7 @@ export {
     unSubscribeFeedService,
     shareFeedService,
     writeCommentService,
+    deleteCommentService,
     saveToFavouritesService,
     unsaveFromFavouritesService,
     unshareFeedService,

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/auth.context'
+import { deleteCommentService } from '../services/user.services'
 
 function Comment({commentProp}) {
     const {_id, comment, createdAt, updatedAt } = commentProp
@@ -9,11 +10,12 @@ function Comment({commentProp}) {
 
     const handleDelete = async (e) => {
         try {
-          //await deleteCommentService()
+          await deleteCommentService(_id)
         } catch (error) {
           navigate("/error")
         }
       }
+      console.log("commentProp", commentProp, "user", user._id)
   return (
     <div>
       <div class="d-flex w-100 justify-content-between">

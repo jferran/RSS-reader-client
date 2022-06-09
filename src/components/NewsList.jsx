@@ -19,7 +19,9 @@ function NewsList({id}) {
       const response = await getMyNewsService(id)
       console.log("response.data!: ", response.data)
       
-      setMyNews(response.data)
+      setMyNews(response.data.sort(function(a,b){
+        return b._id.pubDate - a._id.pubDate
+    }))
       setFilteredNews(response.data)
       console.log("after set")
       
@@ -60,7 +62,15 @@ function NewsList({id}) {
     }
   };
   
-
+  const updateAsRead = (newsId) => {
+    console.log("checking for: ", newsId)
+    setMyNews(myNews.map((article) => {
+        if(article._id._id === newsId){
+          article.seen = true;
+        } 
+      return article
+    }))
+  }
 
   if(!myNews) return <p>Loading</p>
   else console.log("myNews!!!", myNews)
@@ -72,7 +82,7 @@ function NewsList({id}) {
         {/* {myNews && <p>{myNews[0].feed}</p>} */}
         {/* {myNews && myNews.map((element)=><div><NewsEntry article={element}/><hr/></div>)}     */}
         <div className='accordion list-group' id="newsList">
-          {filteredNews && filteredNews.map((element, index)=><NewsEntry key={element._id} onKeyDown={handleSpace} article={element}/>)}
+          {filteredNews && filteredNews.map((element, index)=><NewsEntry key={element._id} onKeyDown={handleSpace} article={element} updateAsRead={updateAsRead}/>)}
         </div>    
     </div>
   )

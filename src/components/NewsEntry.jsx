@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { saveToFavouritesService, unsaveFromFavouritesService, writeCommentService } from '../services/user.services'
+import { markAsRead, saveToFavouritesService, unsaveFromFavouritesService, writeCommentService } from '../services/user.services'
 import Comments from './Comments'
 
-function NewsEntry({article}) {
+function NewsEntry({article, updateAsRead}) {
   const { favorite, seen } = article
   const { _id, guiid, content, pubDate, comments, title, feed } = article._id
   const [ favoriteState, setFavoriteState ] = useState(favorite)
@@ -54,14 +54,18 @@ function NewsEntry({article}) {
     }
   }
 
+  const handleMarkAsRead = () => {
+    markAsRead(_id)
+    updateAsRead(_id)
+  }
 
   
   return (
     <div className='list-group-item list-group-item-action' id={`heading-${_id}`}>
       {/* <p>{_id}</p> */}
-      <div class="d-flex w-100 justify-content-between" type="button" data-toggle="collapse" data-target={`#collapse-${_id}`} aria-expanded="false" aria-controls={`collapse-${_id}`}>
+      <div onClick={handleMarkAsRead} class="d-flex w-100 justify-content-between" type="button" data-toggle="collapse" data-target={`#collapse-${_id}`} aria-expanded="false" aria-controls={`collapse-${_id}`}>
         <h5 class="mb-1">{title}</h5>
-        <small>{pubDate}</small>
+        {/* <small>{pubDate}</small> */}
       </div>
 
           
@@ -72,8 +76,11 @@ function NewsEntry({article}) {
           <Comments newsId={_id} comments={comments}/>
         </div>
       </div>
+        <div className="d-flex w-100 justify-content-between">
+          <small>{feed.name}</small>
+          <small>{pubDate}</small>
+        </div>
         
-        <small>{feed.name}</small>
         <p>{seen ? 'Seen' : 'Not Seen'}</p>
         {favoriteState ? <button onClick={handleUnsave}>Unsave ♡</button> : <button onClick={handleSave}>Save ❤</button>}
       

@@ -79,6 +79,10 @@ const getFeedsSharedByUsers = () => {
     return service.get(`/user/feed/sharedByUsers`)
 }
 
+const markAsRead = (id) => {
+    return service.get(`/user/news/${id}/markAsRead`)
+}
+
 export {
     getMyFeedsService,
     getMyNewsService,
@@ -94,5 +98,6 @@ export {
     refreshService,
     getNewsUpdateService,
     getFeedNameService,
-    getFeedsSharedByUsers
+    getFeedsSharedByUsers,
+    markAsRead
 }

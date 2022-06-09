@@ -66,6 +66,9 @@ console.log("mySubs: ", mySubscriptions)
             {isLoggedIn && 
             <>
             <li className="nav-item">
+              <NavLink to={`/feed/`} className={`dropdown-item ${textStyle}`}>My news</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
 

@@ -15,9 +15,13 @@ function Comment({commentProp}) {
         }
       }
   return (
-    <div>Comment
-    
-    <p> comment id: {_id}, Comment: {comment}, User: {user.username}, Created at: {createdAt}, Updated at: {updatedAt} {commentProp.user._id === user._id ? <button onClick={handleDelete}>Eliminar</button> : null}</p>
+    <div>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{user.username}:</h5>
+        <small>{createdAt===updatedAt ? <>Created at: </> : <>Updated at: </>} {updatedAt}</small>
+      </div>
+      <p class="mb-1">{comment}</p>
+      {commentProp.user._id === user._id ? <button onClick={handleDelete}>Eliminar</button> : null}
     </div>
   )
 }

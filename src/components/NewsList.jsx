@@ -71,7 +71,7 @@ function NewsList({id}) {
         
         {/* {myNews && <p>{myNews[0].feed}</p>} */}
         {/* {myNews && myNews.map((element)=><div><NewsEntry article={element}/><hr/></div>)}     */}
-        <div>
+        <div className='accordion list-group' id="newsList">
           {filteredNews && filteredNews.map((element, index)=><NewsEntry key={element._id} onKeyDown={handleSpace} article={element}/>)}
         </div>    
     </div>

@@ -57,6 +57,29 @@ function NewsEntry({article}) {
 
   
   return (
+    <div className='list-group-item list-group-item-action' id={`heading-${_id}`}>
+      {/* <p>{_id}</p> */}
+      <div class="d-flex w-100 justify-content-between" type="button" data-toggle="collapse" data-target={`#collapse-${_id}`} aria-expanded="false" aria-controls={`collapse-${_id}`}>
+        <h5 class="mb-1">{title}</h5>
+        <small>{pubDate}</small>
+      </div>
+
+          
+      <div id={`collapse-${_id}`} class="mb-1 collapsed"  className="collapse" aria-labelledby={`heading-${_id}`} data-parent="#newsList">
+        <p ref={ref} dangerouslySetInnerHTML={{__html: content}}/>
+        <div>
+          {/* {comments.map((comment)=><p> comment id: {comment._id}, Comment: {comment.comment}, User: {comment.user.username}, Created at: {comment.createdAt}, Updated at: {comment.updatedAt}</p>)} */}
+          <Comments newsId={_id} comments={comments}/>
+        </div>
+      </div>
+        
+        <small>{feed.name}</small>
+        <p>{seen ? 'Seen' : 'Not Seen'}</p>
+        {favoriteState ? <button onClick={handleUnsave}>Unsave ♡</button> : <button onClick={handleSave}>Save ❤</button>}
+      
+    </div>
+  )
+  return (
     <div>
       {/* <p>{_id}</p> */}
       <h3>{title}</h3>

@@ -34,11 +34,6 @@ function Navbar() {
             <li className="nav-item">
               <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
-
-            <li className="nav-item">  
-              <NavLink to={`/addFeed`} className={`dropdown-item ${textStyle}`}>Add Subscription</NavLink>
-            </li>
-
             <li className="nav-item dropdown">
               <a className={`nav-link dropdown-toggle ${textStyle}`} href="/" id="navbardrop" data-toggle="dropdown">
                 Subscriptions

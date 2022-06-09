@@ -14,16 +14,15 @@ import NotFound from "./pages/NotFound";
 //import { StyleContext } from "../context/StyleContext"
 
 function App() {
-
   // const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
-  const { darkMode, bgStyle } = useContext(StyleContext)
+  const { darkMode, bgStyle, textStyle } = useContext(StyleContext)
   console.log(darkMode)
 
   return (
-    <div className={`App vh-100 ${bgStyle}`}>
+    <div className={`App ${bgStyle} ${textStyle}`}>
       <Navbar />
       <div className="container">
-      <Routes>
+      <Routes className='vh-100'>
         {/* {routes({}).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))} */}

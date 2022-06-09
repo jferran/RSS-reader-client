@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import FeedsList from '../components/FeedsList';
 import NewsList from '../components/NewsList';
+import { AuthContext } from '../context/auth.context';
 import { getNewsUpdateService, refreshService } from '../services/user.services';
+
+
 function Home() {
+  const { isLoggedIn } = useContext(AuthContext)
   useEffect(()=>{
-    handleRefresh()
+    isLoggedIn && handleRefresh()
   },[])
   const handleRefresh = () => {
     refreshService()
@@ -13,7 +17,7 @@ function Home() {
   return (
     <div>
       <h3>Welcome</h3>
-      <NewsList/>
+      {isLoggedIn && <NewsList/>}
       {/* <FeedsList/> */}
     </div>
     

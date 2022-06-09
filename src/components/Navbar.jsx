@@ -13,7 +13,7 @@ function Navbar() {
   const { mySubscriptions } = useContext(SubscriptionsContext)
   const [myFeeds, setMyFeeds] = useState(null)
   useEffect(()=>{
-    getMyFeeds()
+    if(isLoggedIn) getMyFeeds()
   },[])
 
   const toggleStyles = (navInfo) => {

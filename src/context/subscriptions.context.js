@@ -34,8 +34,8 @@ function SubscriptionsWrapper(props){
     }
 
     useEffect(()=>{
-        getSubscriptions()
-        getSharedSubscriptions()
+        //getSubscriptions()
+        //getSharedSubscriptions()
     },[])
     
     return (

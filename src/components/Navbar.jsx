@@ -34,15 +34,14 @@ function Navbar() {
             <li className="nav-item">
               <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <NavLink className={`nav-link dropdown-toggle`} to="/feed" id="navbardrop" data-toggle="dropdown">
                 Subscriptions
               </NavLink>
               <div className={`dropdown-menu`}>
-                {/* {myFeeds !== null && myFeeds.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`}><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/>{element.feed.name}</NavLink>)} */}
                 {mySubscriptions !== null && mySubscriptions.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item`}><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/>{element.feed.name}</NavLink>)}
               </div>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a className={`nav-link dropdown-toggle ${textStyle}`} href="/" id="navbardrop" data-toggle="dropdown">
                 Subscriptions

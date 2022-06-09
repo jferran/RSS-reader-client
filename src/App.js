@@ -13,7 +13,7 @@ import FeedPage from "./pages/FeedPage";
 import Home from "./pages/Home";
 import ManageFeeds from "./pages/ManageFeeds";
 import NotFound from "./pages/NotFound";
-//import { StyleContext } from "../context/StyleContext"
+
 
 function App() {
   // const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)

@@ -44,35 +44,55 @@ function Signup() {
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignup}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" value={username} onChange={handleUsernameChange}/>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmailChange}/>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" value={password} onChange={handlePasswordChange}/>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
 
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        {errorMessage !== null && <p>{errorMessage}</p>}
-        <button type="submit">Signup</button>
-      </form>
+     
       
     </div>
   );
+  return (
+    <form onSubmit={handleSignup}>
+    <label>Name:</label>
+    <input
+      type="text"
+      name="username"
+      value={username}
+      onChange={handleUsernameChange}
+    />
+
+    <label>Email:</label>
+    <input
+      type="email"
+      name="email"
+      value={email}
+      onChange={handleEmailChange}
+    />
+
+    <label>Password:</label>
+    <input
+      type="password"
+      name="password"
+      value={password}
+      onChange={handlePasswordChange}
+    />
+    {errorMessage !== null && <p>{errorMessage}</p>}
+    <button type="submit">Signup</button>
+  </form>
+  )
 }
 
 export default Signup;

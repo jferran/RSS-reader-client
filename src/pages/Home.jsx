@@ -3,6 +3,7 @@ import FeedsList from '../components/FeedsList';
 import NewsList from '../components/NewsList';
 import { AuthContext } from '../context/auth.context';
 import { getNewsUpdateService, refreshService } from '../services/user.services';
+import Signup from './auth/Signup';
 
 
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
   return (
     <div>
       <h3>Welcome</h3>
-      {isLoggedIn && <NewsList/>}
+      {isLoggedIn ? <NewsList/> : <Signup/>}
       {/* <FeedsList/> */}
     </div>
     

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginService } from "../../services/auth.services";
 
 import {AuthContext} from '../../context/auth.context'
@@ -85,10 +85,9 @@ function Login() {
                   
 
                   <a className="small text-muted" href="#!">Forgot password?</a>
-                  <p className="mb-5 pb-lg-2" style={{color: "#393f81;"}}>Don't have an account? <a href="#!"
-                      style={{color: "#393f81;"}}>Register here</a></p>
-                  <a href="#!" className="small text-muted">Terms of use.</a>
-                  <a href="#!" className="small text-muted">Privacy policy</a>
+                  <p className="mb-5 pb-lg-2" style={{color: "#393f81;"}}>Don't have an account? <NavLink to={'/signup'}>Register here</NavLink> 
+                    {/* <a href="#!"style={{color: "#393f81;"}}>Register here</a> */}
+                      </p>
                 </form>
 
               </div>

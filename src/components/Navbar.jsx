@@ -86,7 +86,7 @@ console.log("mySubs: ", mySubscriptions)
             <li className="nav-item ml-md-auto"><button className="btn btn-primary switch" onClick={handleToggle}>Switch Light/Dark</button></li>
           </ul>
           
-          {isLoggedIn ? (<><button className="btn btn-success my-2 my-sm-0" type="button"><NavLink to={`/account`} className={`${textStyle}`}>My Account</NavLink></button><button className="btn btn-success my-2 my-sm-0" type="button" onClick={handleLogout}>Logout</button></>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
+          {isLoggedIn ? (<><button className="btn btn-success my-2 my-sm-0" type="button"><NavLink to={`/account`} className={`${textStyle}`}>My Account</NavLink></button><button className="btn btn-danger my-2 my-sm-0" type="button" onClick={handleLogout}>Logout</button></>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
           {/* https://www.cssscript.com/dark-mode-switcher-bootstrap-5/ */}
         </div>
         

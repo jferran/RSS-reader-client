@@ -7,22 +7,22 @@ function FeedPage() {
     const {id} = useParams()
     const [feedName, setFeedName] = useState(null)
     const navigate = useNavigate()
-    useEffect(()=>{
-        getFeedName()
-    }, [id])
+    // useEffect(()=>{
+    //     getFeedName()
+    // }, [id])
 
-    const getFeedName = async () => {
-        try {
-            const response = await getFeedNameService(id)
-            setFeedName(response.data.name)
-        } catch (error) {
-            navigate("/error")
-        }
+    // const getFeedName = async () => {
+    //     try {
+    //         const response = await getFeedNameService(id)
+    //         setFeedName(response.data.name)
+    //     } catch (error) {
+    //         navigate("/error")
+    //     }
         
-    }
+    // }
   return (
     <div>
-        <h1>FeedPage: {feedName}</h1>
+        {/* <h1>FeedPage: {feedName}</h1> */}
         
         <NewsList id={id}/>
     </div>

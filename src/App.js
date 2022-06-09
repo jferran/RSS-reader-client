@@ -27,7 +27,7 @@ function App() {
   },[isLoggedIn])
 
   return (
-    <div className={`App ${bgStyle} ${textStyle}`}>
+    <div className={`App min-vh-100 ${bgStyle} ${textStyle}`}>
       <Navbar />
       <div className="container">
       <Routes className='vh-100'>

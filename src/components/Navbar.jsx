@@ -1,54 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from 'react'
 import { AuthContext } from '../context/auth.context'
 import { StyleContext } from '../context/style.context';
 import { SubscriptionsContext } from '../context/subscriptions.context';
-import { getMyFeedsService } from '../services/user.services';
-
 
 function Navbar() {
   const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
   const { isLoggedIn, user, authenticateUser } = useContext(AuthContext)
   const { mySubscriptions } = useContext(SubscriptionsContext)
-  const [myFeeds, setMyFeeds] = useState(null)
-  useEffect(()=>{
-    if(isLoggedIn) getMyFeeds()
-  },[])
-
-  const toggleStyles = (navInfo) => {
-    return navInfo.isActive === true ? activeStyles : inActiveStyles;
-  };
-
-  const activeStyles = {
-    textDecoration: "underline",
-  };
-
-  const inActiveStyles = {
-    textDecoration: "none",
-  };
+  
   const handleLogout = () => {
     localStorage.removeItem("authToken")
     authenticateUser()
   }
 
-  const getMyFeeds = async () => {
-    try {
-      const response = await getMyFeedsService()
-      setMyFeeds(response.data)
-    } catch (error) {
-      
-    }
-  }
-console.log("myFeeds: ",myFeeds)
-console.log("mySubs: ", mySubscriptions)
-
-  console.log('loggedIn: ', isLoggedIn)
-
   return (
     <div>
       <nav className={`navbar navbar-expand-lg ${navBarStyle} ${bgStyle}`}>
-        <NavLink to={`/`} className={`navbar-brand ${textStyle}`}><img src='/RSS-icon.svg' height='25px'/>RSS-Reader</NavLink>
+        <NavLink to={`/`} className={`navbar-brand ${textStyle}`}><img src='/RSS-icon.svg' height='25px' alt=''/>RSS-Reader</NavLink>
         <button className="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
           <span className="navbar-toggler-icon"></span>
         </button>

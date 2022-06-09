@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import { AuthContext } from "./context/auth.context";
 import { StyleContext } from "./context/style.context";
+import { SubscriptionsContext } from "./context/subscriptions.context";
 import Account from "./pages/auth/Account";
 //import routes from "./config/routes";
 import Login from "./pages/auth/Login";
@@ -16,7 +18,13 @@ import NotFound from "./pages/NotFound";
 function App() {
   // const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
   const { darkMode, bgStyle, textStyle } = useContext(StyleContext)
+  const { getSubscriptions } = useContext(SubscriptionsContext)
+  const { isLoggedIn } = useContext(AuthContext)
   console.log(darkMode)
+
+  useEffect(()=>{
+    isLoggedIn && getSubscriptions()
+  },[isLoggedIn])
 
   return (
     <div className={`App ${bgStyle} ${textStyle}`}>

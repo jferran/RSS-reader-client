@@ -42,13 +42,17 @@ function Comments({ newsId, comments }) {
     setComment(e.target.value);
   };
 
+  const deleteFromList = (id) => {
+    setCommentsState(commentsState.filter((comment) => comment._id !== id))
+  }
+
   return (
     <div>
       <h1>Comments</h1>
       {fetching ? (
         <p>...Loading</p>
       ) : (
-        commentsState.map((comment) => <Comment commentProp={comment} />)
+        commentsState.map((comment) => <Comment commentProp={comment} deleteFromList={deleteFromList}/>)
       )}
       <button onClick={handleOpenCommentForm}>Write a comment</button>
 

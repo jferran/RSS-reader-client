@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/auth.context'
 import { deleteCommentService } from '../services/user.services'
 
-function Comment({commentProp}) {
+function Comment({commentProp, deleteFromList}) {
     const {_id, comment, createdAt, updatedAt } = commentProp
     const navigate = useNavigate()
     const {user} = useContext(AuthContext)
@@ -11,6 +11,7 @@ function Comment({commentProp}) {
     const handleDelete = async (e) => {
         try {
           await deleteCommentService(_id)
+          deleteFromList(_id)
         } catch (error) {
           navigate("/error")
         }
@@ -23,7 +24,7 @@ function Comment({commentProp}) {
         <small>{createdAt===updatedAt ? <>Created at: </> : <>Updated at: </>} {updatedAt}</small>
       </div>
       <p class="mb-1">{comment}</p>
-      {commentProp.user._id === user._id ? <button onClick={handleDelete}>Eliminar</button> : null}
+      {commentProp.user === user._id || commentProp.user._id === user._id? <button onClick={handleDelete}>Eliminar</button> : null}
     </div>
   )
 }

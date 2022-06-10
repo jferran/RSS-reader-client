@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useContext } from 'react'
 import { AuthContext } from '../context/auth.context'
 import { StyleContext } from '../context/style.context';
@@ -9,10 +9,13 @@ function Navbar() {
   const { darkMode, handleToggle, bgStyle, textStyle, navBarStyle } = useContext(StyleContext)
   const { isLoggedIn, user, authenticateUser } = useContext(AuthContext)
   const { mySubscriptions } = useContext(SubscriptionsContext)
+  const navigate = useNavigate()
   
-  const handleLogout = async () => {
+  const handleLogout = () => {
     localStorage.removeItem("authToken")
-    await authenticateUser()
+    authenticateUser()
+    navigate('/')
+
   }
 
   return (

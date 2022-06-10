@@ -77,6 +77,9 @@ const unshareFeedService = (id) => {
 const refreshService = () => {
     return service.get(`/feed/`)
 }
+const refreshNewsService = () => {
+    return service.get(`/user/news/refresh`)
+}
 const getNewsUpdateService = () => {
     return service.get(`/user/news/refresh`)
 }
@@ -106,6 +109,7 @@ export {
     unsaveFromFavouritesService,
     unshareFeedService,
     refreshService,
+    refreshNewsService,
     getNewsUpdateService,
     getFeedNameService,
     getFeedsSharedByUsers,

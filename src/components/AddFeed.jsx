@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SubscriptionsContext } from '../context/subscriptions.context'
-import { searchFeedService, subscribeFeedService } from '../services/user.services'
+import { refreshService, searchFeedService, subscribeFeedService } from '../services/user.services'
 
 function AddFeed() {
   const [url, setUrl] = useState('')
@@ -40,6 +40,7 @@ function AddFeed() {
     //const parent = e.target.parentElement
     await subscribeFeedService(feedUrl, title)
     await getSubscriptions()
+    refreshService()
     
   }
 

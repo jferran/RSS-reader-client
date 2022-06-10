@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getMyNewsService } from '../services/user.services'
+import { getMyNewsService, refreshNewsService, refreshService } from '../services/user.services'
 import NewsEntry from './NewsEntry'
 
 function NewsList({id}) {
@@ -16,6 +16,7 @@ function NewsList({id}) {
   const getMyNews = async () => {
     try {
       console.log("hey")
+      //await refreshService()
       const response = await getMyNewsService(id)
       console.log("response.data!: ", response.data)
       
@@ -72,12 +73,18 @@ function NewsList({id}) {
     }))
   }
 
+  const handleRefresh = async () => {
+    await refreshService()
+    await refreshNewsService()
+    await getMyNews()
+  }
+
   if(!myNews) return <p>Loading</p>
   else console.log("myNews!!!", myNews)
   
   return (
     <div>
-        {{id}!=='favourites' ? <><button onClick={handleFilterAll}>All</button><button onClick={handleFilterSeen}>Seen</button><button onClick={handleFilterNotSeen}>Not seen</button></> : null}
+        {{id}!=='favourites' ? <><button onClick={handleFilterAll}>All</button><button onClick={handleFilterSeen}>Seen</button><button onClick={handleFilterNotSeen}>Not seen</button><button onClick={handleRefresh}>Refresh</button></> : null}
         
         {/* {myNews && <p>{myNews[0].feed}</p>} */}
         {/* {myNews && myNews.map((element)=><div><NewsEntry article={element}/><hr/></div>)}     */}

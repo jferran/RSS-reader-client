@@ -84,7 +84,7 @@ function NewsList({id}) {
   
   return (
     <div>
-        {{id}!=='favourites' ? <><button onClick={handleFilterAll}>All</button><button onClick={handleFilterSeen}>Seen</button><button onClick={handleFilterNotSeen}>Not seen</button><button onClick={handleRefresh}>Refresh</button></> : null}
+        {{id}!=='favourites' ? <><button onClick={handleFilterAll}>All</button><button onClick={handleFilterSeen}>Seen</button><button onClick={handleFilterNotSeen}>Not seen</button><button onClick={handleRefresh} className="btn btn-primary">Refresh</button></> : null}
         
         {/* {myNews && <p>{myNews[0].feed}</p>} */}
         {/* {myNews && myNews.map((element)=><div><NewsEntry article={element}/><hr/></div>)}     */}

@@ -10,9 +10,9 @@ function Navbar() {
   const { isLoggedIn, user, authenticateUser } = useContext(AuthContext)
   const { mySubscriptions } = useContext(SubscriptionsContext)
   
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("authToken")
-    authenticateUser()
+    await authenticateUser()
   }
 
   return (

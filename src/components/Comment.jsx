@@ -20,7 +20,7 @@ function Comment({commentProp, deleteFromList}) {
   return (
     <div>
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{user.username}:</h5>
+        <h5 class="mb-1">{commentProp.user.username}:</h5>
         <small>{createdAt===updatedAt ? <>Created at: </> : <>Updated at: </>} {updatedAt}</small>
       </div>
       <p class="mb-1">{comment}</p>

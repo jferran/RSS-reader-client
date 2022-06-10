@@ -45,7 +45,7 @@ function Comments({ newsId, comments }) {
   const deleteFromList = (id) => {
     setCommentsState(commentsState.filter((comment) => comment._id !== id))
   }
-
+  console.log(commentsState)
   return (
     <div>
       <h1>Comments</h1>

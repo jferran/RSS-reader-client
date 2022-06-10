@@ -26,6 +26,7 @@ function Signup() {
     try {
         await signupService(user)
         console.log("todo bien")
+        navigate("/")
     } catch (error) {
         //navigate
         //console.log(error)

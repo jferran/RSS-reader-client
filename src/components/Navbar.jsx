@@ -35,15 +35,15 @@ function Navbar() {
               <NavLink to={`/feed/favourites`} className={`dropdown-item ${textStyle}`}>Favorite news</NavLink>
             </li>
             {/* <li className="nav-item dropdown">
-              <NavLink className={`nav-link dropdown-toggle`} to="/feed" id="navbardrop" data-toggle="dropdown">
+              <NavLink className={`nav-link dropdown-item ${textStyle} dropdown-toggle`} to="/feed" id="navbardrop" data-toggle="dropdown">
                 Subscriptions
               </NavLink>
-              <div className={`dropdown-menu`}>
-                {mySubscriptions !== null && mySubscriptions.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item`}><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/>{element.feed.name}</NavLink>)}
+              <div className={`dropdown-menu ${bgStyle}`}>
+                {mySubscriptions !== null && mySubscriptions.map((element) => <NavLink to={`/feed/${element._id}`} key={element._id} className={`dropdown-item ${textStyle}`}><img style={{height: '16px'}} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${element.feed.sourceUrl}&size=128`} alt=''/>{element.feed.name}</NavLink>)}
               </div>
             </li> */}
             <li className="nav-item dropdown">
-              <a className={`nav-link dropdown-toggle ${textStyle}`} href="/" id="navbardrop" data-toggle="dropdown">
+              <a className={`nav-link dropdown-toggle ${textStyle}`} href="/feed" id="navbardrop" data-toggle="dropdown">
                 Subscriptions
               </a>
               <div className={`dropdown-menu ${bgStyle}`}>
@@ -52,14 +52,14 @@ function Navbar() {
               </div>
             </li>
             <li className="nav-item">
-              <NavLink to={`/manage`} className={`nav-link ${textStyle}`}>Manage Subscriptions</NavLink>
+              <NavLink to={`/manage`} className={`dropdown-item ${textStyle}`}>Manage Subscriptions</NavLink>
             </li>
             </>
           }
             <li className="nav-item ml-md-auto"><button className="btn btn-primary switch" onClick={handleToggle}>Switch Light/Dark</button></li>
           </ul>
           
-          {isLoggedIn ? (<><button className="btn btn-success my-2 my-sm-0" type="button"><NavLink to={`/account`} className={`${textStyle}`}>My Account</NavLink></button><button className="btn btn-danger my-2 my-sm-0" type="button" onClick={handleLogout}>Logout</button></>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
+          {isLoggedIn ? (<><button className="btn btn-primary my-2 my-sm-0" type="button"><NavLink to={`/account`} className={`${textStyle}`}>👥Account</NavLink></button><button className="btn btn-primary my-2 my-sm-0" type="button" onClick={handleLogout}>🚪Logout</button></>) : (<button className="btn btn-success my-2 my-sm-0" type="button"><Link to='/login'>Login</Link></button>)}
           {/* https://www.cssscript.com/dark-mode-switcher-bootstrap-5/ */}
         </div>
         
